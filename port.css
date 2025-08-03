@@ -1,6 +1,6 @@
 
 body {
-background-image:url(/img1.png) ;
+background-image:url("https://res.cloudinary.com/dq7brjjnz/image/upload/v1754216176/img1_t7cr9q.png") ;
 background-size: cover;
 background-repeat: no-repeat;
 height: 100vh;
@@ -156,4 +156,5 @@ border: black  solid 1px !important;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
