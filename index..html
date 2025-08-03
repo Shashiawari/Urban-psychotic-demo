@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form with Bootstrap</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="port.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    <style>
+      .form-container {
+        max-width: 500px;
+        margin: auto;
+        margin-top: 50px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <div class="form-container">
+        <div class="blur">
+          <h4 class="text-center mb-4 c1">URBAN PSYCHOTIC</h4>
+          <p class="text-center c1" style="font-size: 15px;">
+            Join the moment get exclusive drops and updates
+          </p>
+          <form id="submit-to-google-sheet">
+            <div class="form-group">
+              <div class="group">
+                <input
+                  class="form-control input"
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Name</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="group">
+                <input
+                  class="input form-control"
+                  type="text"
+                  name="contact_number"
+                  id="contact_number"
+                  required
+                />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Contact Number</label>
+              </div>
+            </div>
+            <div class="center">
+              <button type="submit" class="btn btn-primary btn-block">
+                SUBSCRIBE
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbz9rrjii8DeUwh1F1Ey-uiipHPvWfHbSwNgM8z3iaJWwKuclEl7S0KjeJyS9Gbd9mtVYA/exec";
+      const form = document.forms["submit-to-google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch(scriptURL, { method: "POST", body: formData })
+          .then((response) => {
+            swal("Done", "Submitted Successfully.", "success");
+            form.reset();
+          })
+          .catch((error) => {
+            swal("Error", "Something went wrong. please try again!", "error");
+          });
+      });
+    </script>
+  </body>
+</html>
